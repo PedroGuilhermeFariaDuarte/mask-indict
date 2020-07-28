@@ -1,8 +1,25 @@
 import React from "react"
-import {View, Text} from "react-native";
+import { Provider } from "react-redux";
 
-export default function Index(){
-    return <View>
-        <Text>Hello from Mask Indict :)</Text>
-    </View>
+// Components
+import CameraController from "./components/CameraController"
+import Container from "./components/Container"
+
+// Redux
+import stored from "./redux/stored";
+
+export default function Index() {
+    return (
+        <>
+            <Provider store={stored}>
+                {/*
+                Camera and other pages/components
+                 */}
+                <Container />
+
+                {/* Dont not remove*/}
+                <CameraController />
+            </Provider>
+        </>
+    )
 }
