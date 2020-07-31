@@ -16,5 +16,8 @@ export const AddAutoFocoMode = (data: CameraData) => action(CameraTypes.CameraIn
 // Add Selected Camera
 export const AddSelectedCamera = (data: CameraData) => action(CameraTypes.CameraInfo_setCamera, data)
 
-// Add Selected Camera
+// Add Show Camera
 export const AddShowCamera = (data: CameraData) => action(CameraTypes.CameraInfo_setShowCamera, data)
+
+// Add Start Analyse Camera
+export const AddStartAnalyse = (data: CameraData) => action(CameraTypes.CameraInfo_setStarAnalyse, data)

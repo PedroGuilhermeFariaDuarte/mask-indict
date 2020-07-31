@@ -1,4 +1,3 @@
-import React, { MutableRefObject } from "react";
 import { FaceDetectionResult } from "expo-camera"
 
 // Actions Types
@@ -9,6 +8,7 @@ export enum CameraTypes {
     CameraInfo_setCamera = "@camera/add-camera",
     CameraInfo_setAutoFocosMode = "@camera/add-autofocos",
     CameraInfo_setShowCamera = "@camera/add-show-camera",
+    CameraInfo_setStarAnalyse = "@camera/add-start-analyse",
 }
 
 // Data Types
@@ -17,7 +17,8 @@ export interface CameraData {
     hasPermission?: string,
     currentCam?: number,
     autoFocosCam?: string,
-    showCamera?: boolean
+    showCamera?: boolean,
+    startAnalyse?: boolean
 }
 
 // State Types
@@ -27,4 +28,5 @@ export interface CameraState {
     currentCam?: number,
     autoFocosCam?: string,
     showCamera?: boolean
+    startAnalyse?: boolean
 }
