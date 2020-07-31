@@ -1,6 +1,5 @@
 import { CameraState } from "./actions/types"
 import { Reducer } from "redux"
-import { FaceDetectionResult } from "expo-camera"
 
 const INITIAL_STATE: CameraState = {
     faceDetected: {
@@ -9,7 +8,8 @@ const INITIAL_STATE: CameraState = {
     hasPermission: '',
     currentCam: 0,
     autoFocosCam: 'none',
-    showCamera: false
+    showCamera: false,
+    startAnalyse: false
 }
 
 const reducer: Reducer<CameraState> = (state = INITIAL_STATE, action) => {
@@ -36,6 +36,9 @@ const reducer: Reducer<CameraState> = (state = INITIAL_STATE, action) => {
         case "@camera/add-show-camera":
             console.log("@camera/add-show-camera " + action.payload.showCamera)
             return { ...state, showCamera: action.payload.showCamera }
+        case "@camera/add-start-analyse":
+            console.log("@camera/add-start-analyse " + action.payload.startAnalyse)
+            return { ...state, startAnalyse: action.payload.startAnalyse }
         default:
             return state
     }
