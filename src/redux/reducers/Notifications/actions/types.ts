@@ -5,10 +5,10 @@ export enum NotificationsActions {
 
 // Data Types
 export interface NotificationsData {
-    notification?: Array<Object>
+    notification?: Object
 }
 
 // State Types
 export interface NotificationsState {
-    notification?: Array<Object>
+    notification?: object[]
 }

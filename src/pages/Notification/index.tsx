@@ -34,11 +34,7 @@ function Notification({ navigation }: Props) {
 
     useEffect(() => {
         if (!notifications?.notification?.length) {
-            dispacth(NotificationsActions_addNewNotification({
-                notification: [ {
-                    teste: "teste"
-                } ]
-            }))
+            console.log(notifications)
         }
     }, [ notifications ])
 
