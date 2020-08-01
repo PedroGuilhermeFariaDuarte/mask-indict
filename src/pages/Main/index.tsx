@@ -36,7 +36,7 @@ import {
 type Props = StackScreenProps<RootStackParamList, 'Main'>;
 
 function Main({ navigation }: Props) {
-    const [ user, setUset ] = useState(useSelector((state: AllStates) => state.User))
+    const [ user, setUser ] = useState(useSelector((state: AllStates) => state.User))
     const cameraInfo = useSelector((state: AllStates) => state.CameraControllers)
     useEffect(() => {
         console.log(user)
@@ -65,10 +65,10 @@ function Main({ navigation }: Props) {
                                 <CardFooter>
                                     <Description bold>
                                         Notificações
-                    </Description>
+                                    </Description>
                                     <SubDescription>
                                         16 Notificações
-                    </SubDescription>
+                                    </SubDescription>
                                 </CardFooter>
                             </Card>
                             <Card onPress={() => navigation.navigate("Profile")}>
@@ -78,10 +78,10 @@ function Main({ navigation }: Props) {
                                 <CardFooter>
                                     <Description bold>
                                         Meu Perfil
-                    </Description>
+                                     </Description>
                                     <SubDescription>
                                         Altere nome, idade...
-                    </SubDescription>
+                                        </SubDescription>
                                 </CardFooter>
                             </Card>
                             <Card>

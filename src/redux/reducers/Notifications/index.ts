@@ -8,9 +8,9 @@ const INITIAL_STATE: NotificationsState = {
 
 const reducer: Reducer<NotificationsState> = (state = INITIAL_STATE, action) => {
     return produce(state, (draft: NotificationsState) => {
-
         switch (action.type) {
             case "@notificationAction/add-notification":
+                console.log("Notification", action.payload.notification)
                 draft.notification?.push(action.payload.notification)
                 break
             default:

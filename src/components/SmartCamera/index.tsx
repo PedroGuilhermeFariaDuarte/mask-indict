@@ -1,7 +1,7 @@
 import React, { useState, useEffect, memo, RefObject } from "react"
 import { Camera, CameraMountError, FaceDetectionResult } from "expo-camera"
 import * as FaceDetector from "expo-face-detector"
-import { Vibration } from "react-native"
+import { Vibration, Alert } from "react-native"
 
 // Redux
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
@@ -9,6 +9,7 @@ import { useDispatch, useSelector, shallowEqual } from "react-redux";
 // Redux Actions
 import { AddHasPermission, AddFacesDetected } from "../../redux/reducers/CameraControllers/actions";
 import { AddTakePicturesInTime } from "../../redux/reducers/TakePicture/actions";
+import { NotificationsActions_addNewNotification } from "../../redux/reducers/Notifications/actions";
 
 // Redux State
 import { AllStates } from "../../redux/reducers";
@@ -18,7 +19,6 @@ import User from "../Container"
 
 // Services
 import ServiceTakePicture from "../../services/takePicture";
-import axios from "../../services/axios";
 
 const SmartCamera: React.FC = () => {
     const cameraInfo = useSelector((state: AllStates) => state.CameraControllers)
@@ -30,6 +30,7 @@ const SmartCamera: React.FC = () => {
     const [ cameraIsReady, setCameraIsReady ] = useState<boolean>(true)
     const [ cameraError, setCameraError ] = useState<boolean>(false)
     const [ cameraRef, setCameraRef ] = useState<any>()
+    const [ face, setFaces ] = useState<Object>()
 
     let completedRequest: boolean = true
 
@@ -45,7 +46,10 @@ const SmartCamera: React.FC = () => {
         }
         handlerSetPermissions()
         setStartAnalyse(cameraInfo.startAnalyse)
-        console.log("Reducer Camera info", cameraInfo)
+        if (cameraInfo.faceDetected) {
+            setFaces(cameraInfo.faceDetected.faces.pop())
+        }
+        // console.log("Reducer Camera info", cameraInfo)
     }, [ cameraInfo ])
 
     // Verify permissions
@@ -92,6 +96,14 @@ const SmartCamera: React.FC = () => {
 
                 if (responseServiceTakePicture.code == 200) {
                     console.log("Analyse was a success", responseServiceTakePicture.message)
+                    Alert.alert("Analyse IBM", responseServiceTakePicture.message)
+                    dispatch(NotificationsActions_addNewNotification({
+                        notification: {
+                            from: "Watson IBM",
+                            content: responseServiceTakePicture.message,
+                            date: new Date().toLocaleDateString()
+                        }
+                    }))
                     completedRequest = true;
                     return true;
                 }
