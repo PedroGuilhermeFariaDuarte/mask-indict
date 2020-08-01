@@ -98,3 +98,5 @@ Certifique-se de que o NodeJS está configurado em seu ambiente, consulte[Como c
   ```
 
 Você abrirá uma guia no seu navegador padrão, esperará até que um QR Code apareça no canto inferior esquerdo e clique na opção 'túnel' ao lado de 'lan' e quando o novo QR Code for gerado, em seu smartphone abra o Cliente expo e escaneie QR Code e pronto, basta esperar o aplicativo carregar :)
+
+[Link para o Repostório API](https://github.com/deboralbarros/mask-indict-server)
