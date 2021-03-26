@@ -15,3 +15,4 @@ web-build/
 # Yarn
 *.lock
 yarn.*
+yarn-error.*
