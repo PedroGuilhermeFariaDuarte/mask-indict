@@ -7,22 +7,6 @@ export const Container = styled.SafeAreaView`
     flex-flow:column;
 `
 
-export const ContainerUser = styled.View`
-    width:100%;
-    height:325px;
-    border-bottom-left-radius:30px;
-    border-bottom-right-radius:30px;
-    background-color:#fff;
-    padding:10px;
-    padding-top:100px;
-`
-
-export const ContainerHello = styled.View`
-    width: 100%;
-    height:auto;
-    margin-top:50px;
-`
-
 export const TitleSection = styled.Text`
     font-size:25px;
     font-weight: ${prop => prop.bold ? 'bold' : "normal"};

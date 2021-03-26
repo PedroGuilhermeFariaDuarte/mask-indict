@@ -4,6 +4,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 // Pages
 import SignIn from "../pages/SignIn";
+import SignUp from "../pages/SignUp";
 import Main from "../pages/Main";
 import Notification from "../pages/Notification";
 import Profile from "../pages/Profile";
@@ -17,6 +18,7 @@ function Route() {
                 headerTitle: ""
             }}>
                 <Stack.Screen name="SignIn" component={SignIn} />
+                <Stack.Screen name="SignUp" component={SignUp} />
                 <Stack.Screen name="Main" component={Main} />
                 <Stack.Screen name="Notification" component={Notification} />
                 <Stack.Screen name="Profile" component={Profile} />

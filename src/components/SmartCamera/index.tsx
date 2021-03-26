@@ -101,7 +101,7 @@ const SmartCamera: React.FC = () => {
                         notification: {
                             from: "Watson IBM",
                             content: responseServiceTakePicture.message,
-                            date: new Date().toLocaleDateString()
+                            date: new Date()
                         }
                     }))
                     completedRequest = true;
@@ -134,24 +134,24 @@ const SmartCamera: React.FC = () => {
 
     return (cameraIsReady &&
         cameraError === false) ? (
-            <Camera
-                ref={ref => setCameraRef(ref)}
-                style={{ flex: 1 }
-                }
-                type={cameraInfo.currentCam}
-                onCameraReady={handlerCameraIsReady}
-                onMountError={handlerGetErrorCamera}
-                useCamera2Api={true}
-                onFacesDetected={handlerGetFaceInCamera}
-                faceDetectorSettings={{
-                    mode: FaceDetector.Constants.Mode.accurate,
-                    detectLandmarks: FaceDetector.Constants.Landmarks.all,
-                    runClassifications: FaceDetector.Constants.Classifications.none,
-                    minDetectionInterval: 100,
-                    tracking: true,
-                }}
-            />
-        )
+        <Camera
+            ref={ref => setCameraRef(ref)}
+            style={{ flex: 1 }
+            }
+            type={cameraInfo.currentCam}
+            onCameraReady={handlerCameraIsReady}
+            onMountError={handlerGetErrorCamera}
+            useCamera2Api={true}
+            onFacesDetected={handlerGetFaceInCamera}
+            faceDetectorSettings={{
+                mode: FaceDetector.Constants.Mode.accurate,
+                detectLandmarks: FaceDetector.Constants.Landmarks.all,
+                runClassifications: FaceDetector.Constants.Classifications.none,
+                minDetectionInterval: 100,
+                tracking: true,
+            }}
+        />
+    )
         :
         (<User />)
 }

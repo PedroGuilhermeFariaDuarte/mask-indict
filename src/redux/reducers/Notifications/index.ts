@@ -3,7 +3,7 @@ import { Reducer } from "redux"
 import { produce } from "immer";
 
 const INITIAL_STATE: NotificationsState = {
-    notification: [ { teste: "teste" } ]
+    notification: []
 }
 
 const reducer: Reducer<NotificationsState> = (state = INITIAL_STATE, action) => {

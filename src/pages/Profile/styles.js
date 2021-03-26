@@ -1,4 +1,5 @@
 import styled from "styled-components/native"
+import Input from "../../components/Input";
 
 export const Container = styled.SafeAreaView`
     width:100%;
@@ -11,22 +12,6 @@ export const ContainerScroll = styled.ScrollView`
     width:100%;
     height:100%;
     margin-bottom:1px;
-`
-
-export const ContainerUser = styled.View`
-    width:100%;
-    height:325px;
-    border-bottom-left-radius:30px;
-    border-bottom-right-radius:30px;
-    background-color:#fff;
-    padding:10px;
-    padding-top:100px;
-`
-
-export const ContainerHello = styled.View`
-    width: 100%;
-    height:auto;
-    margin-top:50px;
 `
 
 export const ContainerNameSection = styled.View`
@@ -78,7 +63,7 @@ export const ContainerTextInput = styled.View`
     align-items:center;
 `
 
-export const InputField = styled.TextInput`
+export const InputField = styled(Input)`
     width:100%;
     height:100%;
     border:none;

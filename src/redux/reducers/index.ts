@@ -15,7 +15,7 @@ import { UserState } from "./User/actions/types"
 export interface AllStates {
     CameraControllers: CameraState
     TakePicture: TakePictureState,
-    Notification: NotificationsState,
+    Notifications: NotificationsState,
     User: UserState
 }
 
