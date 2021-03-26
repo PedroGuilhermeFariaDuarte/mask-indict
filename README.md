@@ -1,5 +1,11 @@
 # Mask Indict
 
+<img src="./showroom/login.jpg" width="350">
+<img src="./showroom/loginError.jpg" width="350">
+<br>
+<img src="./showroom/create.jpg" width="350">
+<img src="./showroom/home.jpg" width="350">
+<br>
 Welcome the Mask Indict APP
 
 Here, you will find all the information needed to download and run the Mask Indict App
@@ -29,53 +35,53 @@ First, Will install some dependencies for help us during others installation pac
 1ª **Chocolatey**
 
   This software allows you to install Node.JS, Yarn and ADB(Android Development Bridge) in an extremely simple and hassle-free way.
-  
+
   **Access the website [Chocolatey](https://chocolatey.org/) e follow all steps for installing.**
-  
+
   Made Chocolatey installation, in your cmd/powersheel open how Administrator, execute the  run the followings commands:
-  
+
   ```bash
     #First#
     choco --v
     #your response well be like with: Chocolatey v0.10.15#
   ```
   now
-  
+
   ```bash
   choco install nodejs-lts
   #wait for the installation of the dependencies, chocolatey may ask some questions, I recommend that you answer positively in all questions#
   ```
-  
+
   with end node.js intallation, now
-  
+
   ```bash
   choco install yarn
   #wait for the installation of the dependencies, chocolatey may ask some questions, I recommend that you answer positively in all questions#
   ```
-  
+
   with end Yarn intallation, last install with choco,now
-  
+
   ```bash
   choco install adb
   #wait for the installation of the dependencies, chocolatey may ask some questions, I recommend that you answer positively in all questions#
   ```
-  
+
  Now, on the same terminal or in a new case prefer, selected a directory and run the following command
- 
+
  ```bash
  git clone https://github.com/deboralbarros/mask-indict.git
  #git is not part of api dependencies because you might want to use it to download a repository or something like that, so make sure GIT is installed in tour machine#
  ```
- 
+
  **Ready!**
- 
+
  Open a new terminal or in current termina, go to directory mask-indict and plug your smartphone in your machinine (using USB cable) and run the follwing command
- 
+
  ```bash
  adb devices
  ``´
  await
-  
+
  ```bash
  adb reverse tcp:PORT_API tcp:PORT_AI
  #
@@ -86,13 +92,13 @@ First, Will install some dependencies for help us during others installation pac
 
 Make sure NodeJS is configured in your environment, See [How to set up environment variables on Windows](http://www.dowdandassociates.com/blog/content/howto-set-an-environment-variable-in-windows-command-line-and-registry/#:~:text=%20HowTo%3A%20Set%20an%20Environment%20Variable%20in%20Windows,Registry.%20WarningThis%20method%20is%20recommended%20for...%20More%20)
 
- and now, run 
- 
+ and now, run
+
  ```bash
  yarn install
  ```
   with end packages intallation, now
-  
+
   ```bash
   yarn start
   ```
