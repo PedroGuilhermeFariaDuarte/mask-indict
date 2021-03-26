@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { StackScreenProps } from '@react-navigation/stack';
 import { useSelector } from "react-redux";
 
@@ -17,8 +17,10 @@ import {
     PrimaryTitle,
     SecundaryTitle,
 } from "../../components/Titles";
+
 import SmartCamera from "../../components/SmartCamera"
 import CameraController from "../../components/CameraController"
+import HelloUser from "../../components/HelloUser"
 
 // Icons
 import Notification from "../../icons/Notification";
@@ -27,8 +29,8 @@ import CameraConfig from "../../icons/CameraConfig";
 
 // Styles
 import {
-    Container, ContainerHello, ContainerUser, ContainerActions,
-    ContainerNameSection, TitleSection, CardContent,
+    Container, ContainerActions,
+    ContainerNameSection, TitleSection,
     Card, CardHeader, CardFooter, Description,
     SubDescription, ContainerScrolls
 } from "./styles";
@@ -38,21 +40,12 @@ type Props = StackScreenProps<RootStackParamList, 'Main'>;
 function Main({ navigation }: Props) {
     const [ user, setUser ] = useState(useSelector((state: AllStates) => state.User))
     const cameraInfo = useSelector((state: AllStates) => state.CameraControllers)
-    useEffect(() => {
-        console.log(user)
-    }, [ user ])
 
     return <>
         {
             cameraInfo.showCamera ? (<SmartCamera />) : (
                 <Container>
-                    <ContainerUser>
-                        <ImageProfile source={{ uri: avatar.avatar_1.image_url }} />
-                        <ContainerHello>
-                            <PrimaryTitle>Olá,</PrimaryTitle>
-                            <SecundaryTitle bold>{user.name}!</SecundaryTitle>
-                        </ContainerHello>
-                    </ContainerUser>
+                    <HelloUser />
                     <ContainerNameSection>
                         <TitleSection bold>Tarefas</TitleSection>
                     </ContainerNameSection>

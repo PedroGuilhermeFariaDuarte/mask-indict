@@ -6,7 +6,7 @@ const INITIAL_STATE: CameraState = {
         faces: []
     },
     hasPermission: '',
-    currentCam: 0,
+    currentCam: 1,
     autoFocosCam: 'none',
     showCamera: false,
     startAnalyse: false

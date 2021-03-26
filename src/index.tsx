@@ -1,5 +1,6 @@
 import React from "react"
 import { Provider } from "react-redux";
+import { PersistGate } from "redux-persist/integration/react";
 
 // Components
 import CameraController from "./components/CameraController"
@@ -9,13 +10,15 @@ import Container from "./components/Container"
 import Routers from "./routers"
 
 // Redux
-import stored from "./redux/stored";
+import stored, { persist } from "./redux/stored";
 
 export default function Index() {
     return (
         <>
             <Provider store={stored}>
-                <Routers />
+                <PersistGate persistor={persist}>
+                    <Routers />
+                </PersistGate>
             </Provider>
         </>
     )

@@ -1,18 +1,15 @@
-import { createStore, Store, StoreEnhancer } from "redux"
+import { createStore, Store } from "redux"
+import { persistStore } from "redux-persist";
+
+// Redux Persist
+import ReduxPersist from "../persist";
 
 // Reactotron integrate
 import Reactotron from "../../config/Reactotron";
 
-// Types
-import { CameraState } from "../reducers/CameraControllers/actions/types"
-
 import rootReducer from "../reducers"
 
-export interface ApplicationState {
-    CameraController: CameraState
-}
+const store: Store = createStore(ReduxPersist(rootReducer), Reactotron?.createEnhancer())
 
-
-const store: Store = createStore(rootReducer)
-
+export const persist = persistStore(store)
 export default store

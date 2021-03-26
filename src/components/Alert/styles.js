@@ -8,7 +8,8 @@ export const Container = styled.TouchableOpacity`
     background-color:#fff;
     padding:10px;
     position:absolute;
-    margin-top:350px;
+    bottom:20px;
+    z-index:100;
 
     flex-flow:column;
 `
@@ -25,5 +26,21 @@ export const Header = styled.View`
 export const Content = styled.View`
     width:100%;
     height:100px;
+`
 
+export const Footer = styled.View`
+    width:100%;
+    height:auto;
+
+    flex-flow:row;
+    justify-content:flex-end;
+    align-items:center;
+`
+
+export const ActionButton = styled.Text`
+    width:50px;
+    height:auto;
+    font-size:14px;
+    font-weight:bold;
+    color:#598CE6;
 `

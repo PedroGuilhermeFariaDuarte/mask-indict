@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { View, Text } from "react-native";
 import { StackScreenProps } from '@react-navigation/stack';
 import { useDispatch, useSelector } from "react-redux";
+import { View, Text } from "react-native";
+import { parseISO, differenceInDays } from "date-fns";
 
 // Redux Action
 import { NotificationsActions_addNewNotification } from "../../redux/reducers/Notifications/actions";
@@ -29,104 +30,35 @@ import {
 type Props = StackScreenProps<RootStackParamList, 'Notification'>;
 
 function Notification({ navigation }: Props) {
-    const [ notifications, setNotifications ] = useState(useSelector((state: AllStates) => state.Notification))
-    const dispacth = useDispatch()
-
-    useEffect(() => {
-        if (!notifications?.notification?.length) {
-            console.log(notifications)
-        }
-    }, [ notifications ])
+    const [ notifications, setNotifications ] = useState(useSelector((state: AllStates) => state.Notifications))
+    const dispatch = useDispatch()
 
     return <Container>
         <ContainerScroll>
             <Today>Today</Today>
-            <ConatinerNotification>
-                <NotificationHeader>
-                    <PrimaryTitle bold style={{ fontSize: 16, color: "#598CE6" }}>
-                        Watson
-                        <SecundaryTitle style={{ fontSize: 13 }}>   30/07/2020</SecundaryTitle>
-                    </PrimaryTitle>
-                </NotificationHeader>
-                <NotificationContent>
-                    <Description numberOfLines={1}>
-                        Oi! {useSelector((state: AllStates) => state.User).name}, I've detected a lot of people in your current location
-                    </Description>
-                </NotificationContent>
-            </ConatinerNotification>
-
-            <ConatinerNotification>
-                <NotificationHeader>
-                    <PrimaryTitle bold style={{ fontSize: 16, color: "#598CE6" }}>
-                        Watson
-                        <SecundaryTitle style={{ fontSize: 13 }}>   30/07/2020</SecundaryTitle>
-                    </PrimaryTitle>
-                </NotificationHeader>
-                <NotificationContent>
-                    <Description numberOfLines={1}>
-                        Oi! {useSelector((state: AllStates) => state.User).name}, I've detected a lot of people in your current location
-                    </Description>
-                </NotificationContent>
-            </ConatinerNotification>
-
-            <ConatinerNotification>
-                <NotificationHeader>
-                    <PrimaryTitle bold style={{ fontSize: 16, color: "#598CE6" }}>
-                        Watson
-                        <SecundaryTitle style={{ fontSize: 13 }}>   30/07/2020</SecundaryTitle>
-                    </PrimaryTitle>
-                </NotificationHeader>
-                <NotificationContent>
-                    <Description numberOfLines={1}>
-                        Oi! {useSelector((state: AllStates) => state.User).name}, I've detected a lot of people in your current location
-                    </Description>
-                </NotificationContent>
-            </ConatinerNotification>
-
-            <Today>Last day</Today>
-            <ConatinerNotification>
-                <NotificationHeader>
-                    <PrimaryTitle bold style={{ fontSize: 16, color: "#598CE6" }}>
-                        Watson
-                        <SecundaryTitle style={{ fontSize: 13 }}>   30/07/2020</SecundaryTitle>
-                    </PrimaryTitle>
-                </NotificationHeader>
-                <NotificationContent>
-                    <Description numberOfLines={1}>
-                        Oi! {useSelector((state: AllStates) => state.User).name}, I've detected a lot of people in your current location
-                    </Description>
-                </NotificationContent>
-            </ConatinerNotification>
-
-            <ConatinerNotification>
-                <NotificationHeader>
-                    <PrimaryTitle bold style={{ fontSize: 16, color: "#598CE6" }}>
-                        Watson
-                        <SecundaryTitle style={{ fontSize: 13 }}>   30/07/2020</SecundaryTitle>
-                    </PrimaryTitle>
-                </NotificationHeader>
-                <NotificationContent>
-                    <Description numberOfLines={1}>
-                        Oi! {useSelector((state: AllStates) => state.User).name}, I've detected a lot of people in your current location
-                    </Description>
-                </NotificationContent>
-            </ConatinerNotification>
-
-            <ConatinerNotification>
-                <NotificationHeader>
-                    <PrimaryTitle bold style={{ fontSize: 16, color: "#598CE6" }}>
-                        Watson
-                        <SecundaryTitle style={{ fontSize: 13 }}>   30/07/2020</SecundaryTitle>
-                    </PrimaryTitle>
-                </NotificationHeader>
-                <NotificationContent>
-                    <Description numberOfLines={1}>
-                        Oi! {useSelector((state: AllStates) => state.User).name}, I've detected a lot of people in your current location
-                    </Description>
-                </NotificationContent>
-            </ConatinerNotification>
+            {
+                notifications?.notification?.length > 0 && notifications?.notification.map((notify, index) => {
+                    console.log(differenceInDays(new Date(notify?.date), new Date()))
+                    return (
+                        < ConatinerNotification key={index} >
+                            <NotificationHeader>
+                                <PrimaryTitle bold style={{ fontSize: 16, color: "#598CE6" }}>
+                                    {notify?.from}
+                                    <SecundaryTitle style={{ fontSize: 13 }}>   {differenceInDays(parseISO(new Date(notify?.date)), new Date()) || 'Hoje'}</SecundaryTitle>
+                                </PrimaryTitle>
+                            </NotificationHeader>
+                            <NotificationContent>
+                                <Description numberOfLines={1}>
+                                    Oi! {useSelector((state: AllStates) => state.User).name}, {notify?.content}
+                                </Description>
+                            </NotificationContent>
+                        </ConatinerNotification>
+                    )
+                }
+                )
+            }
         </ContainerScroll>
-    </Container>
+    </Container >
 }
 
 export default Notification
