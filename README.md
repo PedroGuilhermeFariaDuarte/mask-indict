@@ -105,6 +105,6 @@ Make sure NodeJS is configured in your environment, See [How to set up environme
 
 You will open a tab in your default browser, wait until a QR Code appears on the bottom left and click on the 'tunnel' option next to 'lan' and when the new QR Code is generated, on your smartphone open the Expo Client and scan QR Code and ready, just wait for the application to load :)
 
-[Link to API Repository](https://github.com/deboralbarros/mask-indict-server)
+[Link to API Repository](https://github.com/PedroGuilhermeFariaDuarte/mask-indict-server)
 
 [Leia a documentação em PORTUGUÊS-BR](https://github.com/deboralbarros/mask-indict/blob/master/LEIA-ME.md)
